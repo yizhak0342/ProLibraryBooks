@@ -1,18 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
-
-
+import { AddBookComponent } from './components/add-book/add-book.component';
+import { EditBookComponent } from './components/edit-book/edit-book.component';
+import { DeleteBookComponent } from './components/delete-book/delete-book.component';
+import { BooksComponent } from './components/books/books.component';
+AddBookComponent
+import { BooksServiceService } from "./services/books-service.service";
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { routes } from './app.routers';
+import { TitleFilterPipe } from './pipes/title-filter.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BooksStatus } from './book-status.enum';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddBookComponent,
+    EditBookComponent,
+    DeleteBookComponent,
+    BooksComponent,
+    TitleFilterPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [BooksServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
